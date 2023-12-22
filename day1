@@ -1,0 +1,211 @@
+ASSIGNMENT WD-2
+
+Q 1: Reverse a string without using the built in reverse method
+function reverseString(str) {
+    let reversed = '';
+  
+    for (let i = str.length - 1; i >= 0; i--) {
+      reversed += str[i];
+    }
+  
+    return reversed;
+  }
+  let originalString = "Hello, World!";
+  let reversed = reverseString(originalString);
+  console.log(reversed);
+output:
+ 
+  
+Q2: count the number of vowels in a given string
+
+let vowel  = ['a','i','o','u' ];
+vowel.join('');
+console.log(vowel.length);
+output:
+ 
+Q3:convert the first letter of each word in a sentence to uppercase
+let vowels = 'nimra, iqra, hurriya';
+let words = vowels.split(', ');
+for (let i = 0; i < words.length; i++) {
+  words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+}
+let result = words.join(', ');
+console.log(result);
+output:
+ 
+
+Q 4: check if a string is a palindrome
+function isPalindrome(str) {
+    const cleanedStr = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+    const reversedStr = cleanedStr.split('').reverse().join('');
+    return cleanedStr === reversedStr;
+  }
+  let testString = "A man, a plan, a canal, Panama!";
+  console.log(isPalindrome(testString));
+output:
+ 
+  
+Q 5: find the sum of all positive numbers in an array 
+function sumOfPositives(arr) {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] > 0) {
+        sum += arr[i];
+      }
+    }
+    return sum;
+  }
+  let numbers = [1, -2, 3, -4, 5];
+  console.log(sumOfPositives(numbers)); 
+output:
+ 
+  Q6: Find the index of the first occurence of a specific element in an array
+function findIndex(arr, target) {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === target) {
+        return i; 
+      }
+    }
+    return -1; 
+  }
+let myArray = [2, 4, 6, 8, 10];
+  let targetElement = 6;
+  console.log(findIndex(myArray, targetElement));
+  output:
+ 
+Q7: remove all dupplicates from an array without built in methods
+function removeDuplicates(arr) {
+    let uniqueArray = [ ];
+    for (let i = 0; i < arr.length; i++) {
+      if (uniqueArray.indexOf(arr[i]) === -1) {
+        uniqueArray.push(arr[i]);
+      }
+    }
+    return uniqueArray;
+  }
+  let arrayWithDuplicates = [1, 2, 2, 3, 4, 4, 5];
+  let arrayWithoutDuplicates = removeDuplicates(arrayWithDuplicates);
+  console.log(arrayWithoutDuplicates); 
+output:
+ 
+  
+
+8. Question: Sort the array in ascending and descending without built-in methods
+CODE:
+// Declare an array
+let myArray = [64, 25, 12, 22, 11];
+
+// Ascending sort
+let sortedArrayAsc = myArray.slice().sort((a, b) => a - b);
+console.log("Ascending Sorted Array:", sortedArrayAsc);
+
+// Descending sort
+let sortedArrayDesc = myArray.slice().sort((a, b) => b - a);
+console.log("Descending Sorted Array:", sortedArrayDesc);
+OUTPUT:
+ 
+9. Question: Print all even numbers between 1 and 20 using a while loop.
+CODE:
+let number = 2;
+
+while (number <= 20) {
+    console.log(number);
+    number += 2;
+}
+OUTPUT:
+
+
+
+
+
+
+
+
+
+10. Question: Calculate the factorial of a number using a do-while loop.
+CODE:
+function calculateFactorial(number) {
+    let factorial = 1;
+    let i = 1;
+    do {
+        factorial *= i;
+        i++;
+    } while (i <= number);
+
+    return factorial;
+}
+let result = calculateFactorial(5);
+console.log("Factorial of 5 is:", result);
+
+
+OUTPUT:
+ 
+
+11. Question: Iterate through the properties of an object using a for-in loop.
+CODE:
+// Sample object
+let myObject = {
+    name: 'John',
+    age: 30,
+    city: 'New York',
+};
+// Iterate through the properties using a for-in loop
+for (let key in myObject) {
+    if (myObject.hasOwnProperty(key)) {
+        console.log(key + ": " + myObject[key]);
+    }
+}
+
+OUTPUT:
+ 
+
+12. Question: Loop through an array using a for-of loop and double each element.
+CODE:
+// Sample array
+let myArray = [1, 2, 3, 4, 5];
+
+// Loop through the array using a for-of loop and double each element
+for (let element of myArray) {
+    console.log(element * 2);
+}
+OUTPUT:
+ 
+
+13. Question: Check if a number is even or odd and return a corresponding message
+CODE:
+function checkEvenOrOdd(number) {
+    if (number % 2 === 0) {
+        return "The number is even.";
+    } else {
+        return "The number is odd.";
+    }
+}
+// Example: Check if 7 is even or odd
+let result = checkEvenOrOdd(7);
+
+console.log(result);
+OUTPUT:
+ 
+14. Question: Find the maximum of three numbers using nested ternary operators. CODE:
+function findMaxOfThreeNumbers(a, b, c) {
+    let max = (a > b) ? ((a > c) ? a : c) : ((b > c) ? b : c);
+    return "The maximum number is: " + max;
+}
+
+// Example: Find the maximum of 5, 8, and 3
+let result = findMaxOfThreeNumbers(5, 8, 3);
+console.log(result);
+OUTPUT:
+ 
+15. Question: Determine if a year is a leap year or not. 
+ CODE:
+function isLeapYear(year) {
+    // Leap years are divisible by 4, but not divisible by 100 unless they are also divisible by 400
+    return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+}
+
+// Example: Check if 2024 is a leap year
+let result = isLeapYear(2024);
+console.log(result ? "It's a leap year." : "It's not a leap year.");
+OUTPUT:
+ 
