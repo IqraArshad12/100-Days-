@@ -1,0 +1,228 @@
+
+1. Rewrite the following code using a ternary operator:
+let result;
+if (score >= 80) {
+    result = "Pass";
+} else {
+    result = "Fail";
+}
+ANS
+let result = (score >= 80) ? "Pass" : "Fail";
+
+2. How does the optional chaining operator (?.) work, and how can it be used to access nested properties of an object?
+ANS
+It provides a concise way to access properties of an object when the path to those properties might include one or more null or undefined values, preventing the TypeError that would normally occur in such cases. 
+Usage:
+•	The optional chaining operator (?.) is used after each potentially nullable/undefined property in the chain.
+•	If any property along the chain is null or undefined, the entire expression short-circuits, and the result is undefined.
+•	The || operator is used to provide a default value in case the result is undefined
+
+Example:
+const user = {
+    name: "John",
+    address: {
+        city: "New York",
+        zipCode: 10001
+    }
+};
+const streetName = user?.address?.street || "Unknown";
+
+console.log(`Street Name: ${streetName}`);
+
+3. Compare the for...in loop and the for...of loop in terms of their use cases and the types of values they iterate over.
+CODE:
+For In Loop:
+const obj = { a: 1, b: 2, c: 3 };
+for (let key in obj) {
+    console.log(key); // Outputs: 'a', 'b', 'c'
+    console.log(obj[key]); // Outputs: 1, 2, 3
+}
+ 
+For off Loop:
+const arr = [1, 2, 3];
+for (let value of arr) {
+    console.log(value); // Outputs: 1, 2, 3
+}
+ 
+
+4. Define a function calculateAverage that takes an array of numbers as an argument and returns the average value.
+CODE:
+function calculateAverage(numbers) {
+    if (numbers.length === 0) {
+        return 0; // Return 0 for an empty array to avoid division by zero
+    }
+    const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+    const average = sum / numbers.length;
+    return average;
+}
+const numbersArray = [10, 20, 30, 40, 50];
+const averageValue = calculateAverage(numbersArray);
+
+console.log(`The average value is: ${averageValue}`);
+ 
+
+5. Explain the concept of "closures" in JavaScript and provide an example of their practical use.
+CODE:
+function counter() {
+    let count = 0; // This variable is within the scope of the 'counter' function
+    return function() {
+        count++;
+        console.log(count);
+    };
+}
+const counter1 = counter();
+const counter2 = counter();
+counter1(); 
+counter1(); 
+counter2(); 
+counter2(); 
+
+ 
+6. Create an object named student with properties name, age, and grades. Add a method calculateAverage that calculates the average of the grades.
+CODE:
+const student = {
+    name: "John Doe",
+    age: 20,
+    grades: [85, 90, 78, 92, 88],
+    calculateAverage: function() {
+        if (this.grades.length === 0) {
+            return 0; // Return 0 for an empty array to avoid division by zero
+        }
+        const sum = this.grades.reduce((accumulator, grade) => accumulator + grade, 0);
+        const average = sum / this.grades.length;
+        return average;
+    }
+};
+const averageGrade = student.calculateAverage();
+console.log(`${student.name}'s average grade is: ${averageGrade}`);
+ 
+
+7. How can you clone an object in JavaScript and also give one example each deep copy, shallow copy, and reference copy
+CODE:
+Shallow copy:
+const originalObject = { key1: 'value1', key2: 'value2' };
+const shallowCopy = { ...originalObject };
+Deep copy:
+const originalObject = { key1: 'value1', key2: { nestedKey: 'nestedValue' } };
+const deepCopy = JSON.parse(JSON.stringify(originalObject));
+Reference copy:
+const originalObject = { key1: 'value1', key2: 'value2' };
+const referenceCopy = originalObject;
+
+8. Write a loop that iterates over an array of numbers and logs whether each number is even or odd, using a ternary operator.
+CODE:
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+for (let number of numbers) {
+    const result = (number % 2 === 0) ? 'even' : 'odd';
+    console.log(`${number} is ${result}`);
+}
+ 
+
+9. Describe the differences between the for loop, while loop, and do...while loop in JavaScript. When might you use each?
+ANS:
+
+1. for Loop:
+•	Syntax: for (initialization; condition; increment/decrement) { // code }
+•	Use Case: Use when the number of iterations is known in advance, and a counter is involved. Typically used for iterating over a specific range or array.
+2. while Loop:
+•	Syntax: while (condition) { // code }
+•	Use Case: Use when the number of iterations is not known beforehand and is based on a condition. The loop continues as long as the specified condition is true.
+3. do...while Loop:
+•	Syntax: do { // code } while (condition);
+•	Use Case: Similar to a while loop, but guarantees that the loop body is executed at least once. The condition is checked after the loop body, so it always executes at least once.
+
+10. Provide an example of using optional chaining within a loop to access a potentially missing property of an object.
+CODE:
+const users = [
+    { name: 'Alice', address: { city: 'New York' } },
+    { name: 'Bob', address: null },
+    { name: 'Charlie' }
+];
+for (const user of users) {
+    const cityName = user?.address?.city || 'Unknown';
+    console.log(`${user.name}'s city is ${cityName}`);
+}
+ 
+11. Write a for...in loop that iterates over the properties of an object and logs each property name and value.
+CODE:
+const person = {
+    name: 'John',
+    age: 30,
+    occupation: 'Developer'
+};
+for (const property in person) {
+    console.log(`${property}: ${person[property]}`);
+}
+ 
+
+12. Explain the use of the break and continue statements within loops. Provide scenarios where each might be used.
+CODE:
+Break:
+for (let i = 0; i < 10; i++) {
+    if (i === 5) {
+        break; // Exit the loop when i is 5
+    }
+    console.log(i);
+}
+Continue:
+for (let i = 0; i < 10; i++) {
+    if (i % 2 === 0) {
+        continue; // Skip even numbers
+    }
+    console.log(i);
+}
+
+13. Write a function calculateTax that calculates and returns the tax amount based on a given income. Use a ternary operator to determine the tax rate.
+CODE:
+function calculateTax(income) {
+    const taxRate = (income > 50000) ? 0.2 : 0.1;
+    return income * taxRate;
+}
+
+const income = 60000;
+const taxAmount = calculateTax(income);
+console.log(`Tax amount for an income of ${income}: ${taxAmount}`);
+ 
+14. Create an object car with properties make, model, and a method startEngine that logs a message. Instantiate the object and call the method.
+CODE:
+const car = {
+    make: 'Toyota',
+    model: 'Camry',
+    startEngine: function() {
+        console.log('Engine started!');
+    }
+};
+car.startEngine();
+ 
+
+15. Explain the differences between regular functions and arrow functions in terms of scope, this binding, and their use as methods.
+Regular Function	Arrow Function
+Scope: Have their own this binding, which is dynamically scoped. The value of this depends on how the function is called.
+	Scope: Do not have their own this binding; they inherit this from the enclosing lexical scope. They are lexically scoped.
+this Binding: Have a dynamically scoped this. The value of this is determined by how the function is called. It can vary based on the context of the function invocation.
+	This Binding: Inherit this from the enclosing lexical scope. They do not have their own this, and the value of this is fixed at the time of the function creation
+Arguments Object: Have access to the arguments object, which is an array-like object containing all the arguments passed to the function.	Arguments Object: Do not have their own arguments object. If you need to access function arguments, you can use the rest parameters (...args).
+
+Use as Methods: Suitable for use as methods in objects. They have their own this binding, which is determined by the object calling the method.	Use as Methods: Not suitable as methods when you need access to the object's this. They inherit this from the surrounding lexical scope, which is not the object calling the method.
+Constructor Function: Can be used as constructor functions with the new keyword to create instances of objects. They automatically create a new object and bind this to it.
+	Constructor Function: Cannot be used as constructor functions. They do not have their own this, and attempting to use them with new will result in an error.
+
+Example:
+// Regular Function
+function regularFunction() {
+    console.log(this);
+}
+
+// Arrow Function
+const arrowFunction = () => {
+    console.log(this);
+};
+
+const obj = {
+    regularMethod: regularFunction,
+    arrowMethod: arrowFunction
+};
+obj.regularMethod(); // Logs the 'obj' object
+obj.arrowMethod(); // Logs the 'window' or 'undefined' (depends on the context)
+
