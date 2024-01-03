@@ -1,0 +1,225 @@
+	ASSIGNMENT 4
+
+
+1. Map Transformation:
+Given an array of integers, use the `map` method to square each element and return a new array 
+{with the squared values.
+CODE:
+const originalArray = [1, 2, 3, 4, 5];
+const squaredArray = originalArray.map(num => num ** 2);
+console.log(squaredArray); // Output: [1, 4, 9, 16, 25]
+OUTPUT:
+ 
+
+
+2. Filter and Map Combination:
+Take an array of strings, filter out the ones with a length less than 5, and then capitalize the remaining strings using the `map` method.
+CODE:
+const stringArray = ["apple", "banana", "kiwi", "grape"];
+const filteredAndCapitalized = stringArray
+  .filter(str => str.length >= 5)
+  .map(str => str.toUpperCase());
+console.log(filteredAndCapitalized); // Output: ["BANANA", "GRAPE"]
+OUTPUT:
+ 
+
+3. Sorting Objects:
+ Given an array of objects with a 'price' property, use the `sort` method to arrange them in descending order based on their prices.
+CODE:
+const products = [
+  { name: "Laptop", price: 800 },
+  { name: "Phone", price: 600 },
+  { name: "Tablet", price: 300 },
+];
+
+const sortedProducts = products.sort((a, b) => b.price - a.price);
+console.log(sortedProducts);	
+OUTPUT:
+ 
+
+4. Reduce for Aggregation:
+- Q: Use the `reduce` method to find the total sum of all even numbers in an array of integers.
+CODE:
+const numbers = [1, 2, 3, 4, 5, 6];
+const sumOfEvens = numbers.reduce((acc, num) => (num % 2 === 0 ? acc + num : acc), 0);
+console.log(sumOfEvens);
+OUTPUT:
+ 
+5. Find and Modify:
+- Q: Given an array of objects with 'id' properties, use the `find` method to locate an object with a specific 'id' and update its 'status' property to 'completed'.
+CODE:
+const objectsArray = [{ id: 1, status: "pending" }, { id: 2, status: "ongoing" }];
+
+const findAndUpdate = (idToUpdate, newStatus) => {
+  const foundObject = objectsArray.find(obj => obj.id === idToUpdate);
+  if (foundObject) foundObject.status = newStatus;
+};
+
+findAndUpdate(2, "completed");
+console.log(objectsArray);
+OUTPUT:
+ 
+
+
+6. Chaining Methods:
+- Q: Create a chain of array methods to find the average of all positive numbers in an array of mixed integers and return the result rounded to two decimal places.
+CODE:
+const mixedNumbers = [3, -1, 7, 2, -5, 8, -4];
+const averageOfPositives = mixedNumbers
+  .filter(num => num > 0)
+  .reduce((acc, num, index, array) => acc + num / array.length, 0);
+
+console.log(averageOfPositives.toFixed(2)); // Output: "5.00"
+OUTPUT:
+ 
+
+7. Conditional Filtering:
+- Q: Implement a function that takes an array of objects with 'age' properties and returns an array of those who are adults (age 18 and above) using the `filter` method.
+CODE:
+const people = [{ name: "Alice", age: 25 }, { name: "Bob", age: 18 }, { name: "Charlie", age: 30 }];
+const adults = people.filter(person => person.age >= 18);
+console.log(adults);
+OUTPUT:
+ 
+
+8. Advanced Sorting:
+- Q: Sort an array of strings based on their lengths in ascending order. If two strings have the same length, maintain their relative order in the sorted array.
+CODE:
+const stringsArray = ["apple", "banana", "kiwi", "grape", "pear"];
+const sortedByLength = stringsArray.sort((a, b) => a.length - b.length);
+console.log(sortedByLength);
+OUTPUT:
+
+
+9. Nested Array Operations:
+- Q: Given an array of arrays containing numbers, use a combination of array methods to flatten the structure and then calculate the sum of all the numbers.
+CODE:
+const nestedArrays = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+const flattenedSum = nestedArrays.flat().reduce((acc, num) => acc + num, 0);
+console.log(flattenedSum); // Output: 45
+OUTPUT:
+ 
+
+10. Error Handling with Find:
+- Q: Modify the `find` method to handle the scenario where the desired element is not found, returning a custom default object instead.
+CODE:
+const customDefault = { id: -1, status: "not found" };
+const findWithDefault = (idToFind) => {
+  const foundObject = objectsArray.find(obj => obj.id === idToFind) || customDefault;
+  return foundObject;
+};
+
+console.log(findWithDefault(3));
+OUTPUT:
+ 
+
+11. Map Method:
+- Q: How does the `map` method work in JavaScript, and can you provide an example of when you might use it to manipulate an array of objects?
+CODE:
+The map method in JavaScript is used to iterate over an array and transform each element using a provided function. It returns a new array with the results of applying the function to each element.
+const originalArray = [1, 2, 3];
+const squaredArray = originalArray.map(num => num ** 2);
+console.log(squaredArray); // Output: [1, 4, 9]
+OUTPUT:
+ 
+
+12. Filter Method:
+- Q: Explain the purpose of the `filter` method. Provide an example where you use `filter` to extract elements from an array based on a specific condition.
+CODE:
+The filter method is used to create a new array by including only the elements that satisfy a specific condition. It does not modify the original array.
+const numbers = [1, 2, 3, 4, 5];
+const evenNumbers = numbers.filter(num => num % 2 === 0);
+console.log(evenNumbers); // Output: [2, 4]
+OUTPUT:
+ 
+
+13. Sort Method:
+- Q: Discuss the default behavior of the `sort` method for strings and numbers. How would you use a custom comparison function to sort an array of objects by a specific property?
+ANS
+The sort method is used to arrange the elements of an array either in ascending or descending order. By default, it sorts strings lexicographically and numbers in ascending order. A custom comparison function can be provided for complex sorting.
+CODE:
+const fruits = ["banana", "apple", "kiwi"];
+fruits.sort(); // lexicographical sorting
+console.log(fruits); // Output: ["apple", "banana", "kiwi"]
+OUTPUT:
+	 
+14. Reduce Method:
+- Q: Describe the purpose of the `reduce` method and provide an example where you use it to compute a single value from an array of numbers.
+ANS:
+The reduce method is used to accumulate values from an array into a single result. It takes a callback function that is applied to each element in the array and maintains an accumulator.
+CODE:
+const numbers = [1, 2, 3, 4, 5];
+const sum = numbers.reduce((acc, num) => acc + num, 0);
+console.log(sum); // Output: 15
+OUTPUT:
+ 
+15. Find Method:
+- Q: How does the `find` method differ from `filter`? Give an example of a scenario where using `find` is more appropriate than `filter`.
+ANS
+The find method is similar to filter but returns the first element that satisfies the provided condition or undefined if no element is found.
+CODE:
+const numbers = [1, 2, 3, 4, 5];
+const foundNumber = numbers.find(num => num > 2);
+console.log(foundNumber); // Output: 3
+OUTPUT:
+ 
+
+16. Combining Methods:
+- Q: Create a chain of array methods (`map`, `filter`, `reduce`, etc.) to transform an array of strings into a single concatenated string with a specific condition.
+CODE:
+const words = ["hello", "world", "how", "are", "you"];
+const result = words
+  .filter(word => word.length > 3)
+  .map(word => word.toUpperCase())
+  .reduce((acc, word) => acc + " " + word, "");
+
+console.log(result); // Output: "WORLD HOW"
+OUTPUT:
+ 
+
+17. Callback Functions:
+- Q: Explain the concept of callback functions in the context of array methods. Provide an example of using a callback function with the `map` method.
+ANS:
+Callback functions are functions passed as arguments to other functions. In the context of array methods like map, the callback function is applied to each element of the array.
+CODE:
+const numbers = [1, 2, 3];
+const squaredNumbers = numbers.map(function(num) {
+  return num ** 2;
+});
+
+console.log(squaredNumbers); // Output: [1, 4, 9]
+OUTPUT:	
+ 
+
+
+18. Error Handling:
+- Q: How would you handle potential errors when using array methods like `find` or `reduce`? Provide an example of error handling in such a scenario.
+ANS:
+To handle errors with find or reduce, you can use default values or conditional checks.
+CODE:
+const foundObject = objectsArray.find(obj => obj.id === desiredId);
+const result = foundObject || defaultObject;
+// OR
+const sum = numbers.reduce((acc, num) => {
+  if (num % 2 === 0) {
+    return acc + num;
+  }
+  return acc;
+}, 0);
+19. Immutable Operations:
+- Q: Discuss the importance of immutability when working with array methods. Demonstrate how you would perform immutable operations using methods like `map` or `filter`.
+ANS:
+Immutable operations maintain the original array and create a new one with the desired changes. Methods like map and filter are commonly used for immutability.
+CODE:
+const originalArray = [1, 2, 3];
+const squaredArray = originalArray.map(num => num ** 2);
+console.log(originalArray); // Output: [1, 2, 3]
+console.log(squaredArray); // Output: [1, 4, 9]
+OUTPUT:
+ 
+20. Performance Considerations:
+- Q: Compare the performance implications of using `map` versus `forEach`. In what scenarios would you prefer one over the other, and why? 
+ANS
+•	map is generally used for transforming elements, while forEach is for side effects. Use map when creating a new array is desired.
+•	forEach has no return value, while map produces a new array. If you don't need a new array, forEach might be more suitable.
+•	Performance differences are usually negligible, and readability and code intent should guide your choice.
