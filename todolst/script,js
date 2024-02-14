@@ -1,0 +1,57 @@
+document.addEventListener('DOMContentLoaded', function() {
+  const todoInput = document.getElementById('todoInput');
+  const todoList = document.getElementById('todoList');
+  let todos = [];
+
+  function renderTodoList() {
+    todoList.innerHTML = '';
+    todos.forEach((todo, index) => {
+      const todoItem = document.createElement('div');
+      todoItem.classList.add('todo-item');
+      todoItem.textContent = todo.text;
+      
+      const deleteButton = document.createElement('button');
+      deleteButton.textContent = '❌';
+      deleteButton.classList.add('delete-button');
+      deleteButton.addEventListener('click', function() {
+        deleteTodo(index);
+      });
+
+      todoItem.appendChild(deleteButton);
+      
+      if (todo.completed) {
+        todoItem.classList.add('completed');
+      }
+
+      todoItem.addEventListener('click', function() {
+        toggleTodo(index);
+      });
+
+      todoList.appendChild(todoItem);
+    });
+  }
+
+  function addTodo() {
+    const todoText = todoInput.value.trim();
+    if (todoText !== '') {
+      todos.push({ text: todoText, completed: false });
+      renderTodoList();
+      todoInput.value = '';
+    }
+  }
+
+  function toggleTodo(index) {
+    todos[index].completed = !todos[index].completed;
+    renderTodoList();
+  }
+
+  function deleteTodo(index) {
+    todos.splice(index, 1);
+    renderTodoList();
+  }
+
+  function clearCompleted() {
+    todos = todos.filter(todo => !todo.completed);
+    renderTodoList();
+  }
+});
